@@ -29,7 +29,7 @@ namespace Ether.WeightedSelector.Tests
 
         //Range of weights each item can have. 
         private const int MinWeight = 1;
-        private const int MaxWeight = 30;
+        private const int MaxWeight = 20;
         
         [TestMethod]
         public void ProbabilityTest()

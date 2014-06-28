@@ -34,7 +34,8 @@ namespace Ether.WeightedSelector.Tests
             Selector.Add(ActionCandidates);
 
             var SelectedAction = Selector.Select();
-
+            
+            //This test is mostly for documentation, however this does have to be true:
             Assert.IsTrue(SelectedAction.Name == "Cast Heal" || 
                           SelectedAction.Name == "Flee" || 
                           SelectedAction.Name == "Attack");
