@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.WeightedSelector", "Ether.WeightedSelector\Ether.WeightedSelector.csproj", "{23C09E37-3742-4E08-86F5-941F492D2713}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ether.WeightedSelector.Tests", "Ether.WeightedSelector.Tests\Ether.WeightedSelector.Tests.csproj", "{336C2E6A-A8FB-4BB4-BE6F-2CA841740E38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB2B4D7E-C6D6-46E1-9745-FFB421C745B4}"
+	ProjectSection(SolutionItems) = preProject
+		WebEssentials-Settings.json = WebEssentials-Settings.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23C09E37-3742-4E08-86F5-941F492D2713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C09E37-3742-4E08-86F5-941F492D2713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C09E37-3742-4E08-86F5-941F492D2713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C09E37-3742-4E08-86F5-941F492D2713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336C2E6A-A8FB-4BB4-BE6F-2CA841740E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336C2E6A-A8FB-4BB4-BE6F-2CA841740E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336C2E6A-A8FB-4BB4-BE6F-2CA841740E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336C2E6A-A8FB-4BB4-BE6F-2CA841740E38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
