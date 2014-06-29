@@ -5,7 +5,7 @@ WeightedSelector.NET lets you assign weights to a set of choices, then make  dec
 
 This is useful for scenarios where choices are made based on complicated but quantifiable factors, or where you need to choose between a number of reasonable choices in a way that appears semi-random. Great examples of the latter case include suggestion engines and game AI.
 
-WeightedSelector.NET's API is easy to pick up and fun to use. In one of the examples, we implement a game AI that decides between attacking, fleeing, and casting a heal spell based on a dynamic "fear" factor... In 9 lines of code!
+WeightedSelector.NET's API is easy to pick up and fun to use. In one of the examples, we implement a game AI that decides between attacking, fleeing, and casting a heal spell based on a dynamic "fear" factor... In 6 lines of code!
 
 How can I get started?
 ==============
