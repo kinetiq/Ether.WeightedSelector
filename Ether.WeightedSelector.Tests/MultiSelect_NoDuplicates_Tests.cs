@@ -37,7 +37,7 @@ namespace Ether.WeightedSelector.Tests
 
         private WeightedSelector<string> BuildSelector()
         {
-            var Selector = new WeightedSelector<string>() { AllowDuplicates = false };
+            var Selector = new WeightedSelector<string>(new SelectorOptions() { AllowDuplicates = false });
             var Inputs = InputBuilder.CreateInputs(MinInputs, MaxInputs, MinWeight, MaxWeight);
             Selector.Add(Inputs);
 

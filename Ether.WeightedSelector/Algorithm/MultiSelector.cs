@@ -16,16 +16,23 @@ namespace Ether.WeightedSelector.Algorithm
 
             //Create a shallow clone of the our items, because we're going to be removing 
             //items from the list in some cases, and we want to preserve the original.
-            var Items = new List<WeightedItem<T>>(WeightedSelector.WeightedItems);
+            var Items = new List<WeightedItem<T>>(WeightedSelector.Items);
             var ResultList = new List<T>();
 
             do
             {
-                var Item = ExecuteSelect(Items);
+                WeightedItem<T> Item = null;
+
+                if (WeightedSelector.Options.AllowDuplicates)
+                    Item = ExecuteSelect(Items); //Use binary search if we can.
+                else
+                    //Force linear search, since AllowDuplicates currently breaks binary search.
+                    Item = ExecuteSelectWithLinearSearch(Items); 
+
 
                 ResultList.Add(Item.Value);
 
-                if (!WeightedSelector.AllowDuplicates)
+                if (!WeightedSelector.Options.AllowDuplicates)
                     Items.Remove(Item);
 
             } while (ResultList.Count < count);
@@ -44,7 +51,7 @@ namespace Ether.WeightedSelector.Algorithm
             if (Items.Count == 0)
                 throw new InvalidOperationException("There were no items to select from.");
 
-            if (!WeightedSelector.AllowDuplicates && Items.Count < count)
+            if (!WeightedSelector.Options.AllowDuplicates && Items.Count < count)
                 throw new InvalidOperationException("There aren't enough items in the collection to take " + count);
         }
     }

@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Ether.WeightedSelector.Tests
 {
     [TestClass]
-    public class MultiSelect_WithAllowDuplicates_Tests
+    public class MultiSelectWithAllowDuplicatesTests
     {
         //Tests multiple selection using randomized parameters. 
 
@@ -34,13 +34,13 @@ namespace Ether.WeightedSelector.Tests
                 var SelectionList = Selector.SelectMultiple(SelectionsRequested);
 
                 Assert.IsTrue(SelectionList.Count == SelectionsRequested); //We have as many selections as we requested.
-                Assert.IsTrue(Selector.Items.Count <  SelectionsRequested); //We have more selections than we have source items (due to duplicates).
+                Assert.IsTrue(Selector.ReadOnlyItems.Count <  SelectionsRequested); //We have more selections than we have source items (due to duplicates).
             }
         }
 
         private WeightedSelector<string> BuildSelector()
         {
-            var Selector = new WeightedSelector<string>() { AllowDuplicates = true};
+            var Selector = new WeightedSelector<string>(new SelectorOptions() { AllowDuplicates = true });
             var Inputs = InputBuilder.CreateInputs(MinInputs, MaxInputs, MinWeight, MaxWeight);
             Selector.Add(Inputs);
 

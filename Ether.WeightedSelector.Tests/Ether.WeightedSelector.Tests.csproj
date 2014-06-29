@@ -51,11 +51,15 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Helpers\InputBuilder.cs" />
+    <Compile Include="Helpers\ProbabilityHelpers.cs" />
+    <Compile Include="ReuseTests.cs" />
     <Compile Include="NinjaTests.cs" />
     <Compile Include="MultiSelect_NoDuplicates_Tests.cs" />
     <Compile Include="MultiSelect_WithAllowDuplicates_Tests.cs" />
+    <Compile Include="Probability_ExtremeInputs_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProbabilityTests.cs" />
+    <Compile Include="Probability_ExtremeWeight_Tests.cs" />
+    <Compile Include="Probability_Simple_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ether.WeightedSelector\Ether.WeightedSelector.csproj">

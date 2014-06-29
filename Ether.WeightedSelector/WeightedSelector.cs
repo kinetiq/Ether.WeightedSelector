@@ -1,34 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using Ether.WeightedSelector.Algorithm;
 
 namespace Ether.WeightedSelector
 {
     public class WeightedSelector<T> 
     {
-        internal readonly List<WeightedItem<T>> WeightedItems = new List<WeightedItem<T>>();
-        public Boolean AllowDuplicates { get; set; }
-        public Boolean DropZeroWeightItems { get; set; }
+        internal readonly List<WeightedItem<T>> Items = new List<WeightedItem<T>>();
+        public readonly SelectorOptions Options;  
 
-        public WeightedSelector()
+        internal int[] CumulativeWeights = null;   //used for binary search. 
+        private Boolean IsCumulativeWeightsStale;  //forces recalc of CumulativeWeights any time our list of WeightedItems changes.
+                                       
+        public WeightedSelector(SelectorOptions options = null)
         {
-            AllowDuplicates = false;
-            DropZeroWeightItems = true;
+            if (options == null)
+                options = new SelectorOptions();
+
+            this.Options = options; 
+            IsCumulativeWeightsStale = false;
         }
 
-        #region "Add"
+        #region "Add/Remove"
         public void Add(WeightedItem<T> item)
         {
             if (item.Weight <= 0)
             {               
-                if (DropZeroWeightItems)
+                if (Options.DropZeroWeightItems)
                     return; //"drop" the item, that is don't add it.
                 else
                     throw new InvalidOperationException("Scores must be => 0.");
             }
 
-            WeightedItems.Add(item);    
+            IsCumulativeWeightsStale = true;
+            Items.Add(item);    
         }
        
         public void Add(IEnumerable<WeightedItem<T>> items)
@@ -43,15 +50,23 @@ namespace Ether.WeightedSelector
         {
             this.Add(new WeightedItem<T>(item, weight));
         }
+
+        public void Remove(WeightedItem<T> item)
+        {
+            IsCumulativeWeightsStale = true;
+            Items.Remove(item);
+        }
         #endregion
 
-        #region "Selection"
+        #region "Selection API"
 
         /// <summary>
-        /// Execute the selection algorithm.
+        /// Execute the selection algorithm, returning one result.
         /// </summary>
         public T Select()
         {
+            CalculateCumulativeWeights();
+
             var Selector = new SingleSelector<T>(this);
             return Selector.Select();
         }
@@ -61,8 +76,19 @@ namespace Ether.WeightedSelector
         /// </summary>
         public List<T> SelectMultiple(int count)
         {
+            CalculateCumulativeWeights();
+
             var Selector = new MultiSelector<T>(this);
             return Selector.Select(count);
+        }
+
+        private void CalculateCumulativeWeights()
+        {
+            if (!IsCumulativeWeightsStale) //If it's not stale, we can skip this! 
+                return;
+
+            IsCumulativeWeightsStale = false; 
+            CumulativeWeights = BinarySearchOptimizer.GetCumulativeWeights(Items);  
         }
         #endregion
 
@@ -71,9 +97,9 @@ namespace Ether.WeightedSelector
         /// <summary>
         /// Read-only collection of WeightedItems.
         /// </summary>
-        public ReadOnlyCollection<WeightedItem<T>> Items
+        public ReadOnlyCollection<WeightedItem<T>> ReadOnlyItems
         {
-            get { return new ReadOnlyCollection<WeightedItem<T>>(this.WeightedItems); }
+            get { return new ReadOnlyCollection<WeightedItem<T>>(this.Items); }
         }
 
         #endregion

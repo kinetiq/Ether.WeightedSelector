@@ -10,7 +10,7 @@ namespace Ether.WeightedSelector.Algorithm
 
         internal T Select()
         {
-            var Items = WeightedSelector.WeightedItems;
+            var Items = WeightedSelector.Items;
 
             if (Items.Count == 0)
                 throw new InvalidOperationException("There were no items to select from.");
