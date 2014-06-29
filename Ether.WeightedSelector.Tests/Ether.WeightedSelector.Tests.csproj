@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Helpers\InputBuilder.cs" />
     <Compile Include="Helpers\ProbabilityHelpers.cs" />
+    <Compile Include="NinjaStringTests.cs" />
     <Compile Include="ReuseTests.cs" />
     <Compile Include="NinjaTests.cs" />
     <Compile Include="MultiSelect_NoDuplicates_Tests.cs" />
