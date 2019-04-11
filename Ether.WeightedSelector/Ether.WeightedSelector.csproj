@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.2.0</Version>
-    <Authors>Brian MacKay, Kinetiq, and other contributors</Authors>
+    <Authors>Brian MacKay</Authors>
     <Company>Kinetiq</Company>
     <PackageProjectUrl>https://github.com/kinetiq/Ether.WeightedSelector</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kinetiq/Ether.WeightedSelector</RepositoryUrl>
@@ -12,11 +12,11 @@
 
 This simple concept is useful for machine learning scenarios where choices need to be made based on dynamic factors. Great examples include suggestion engines and game AI.
  
-In one of the examples, we implement a game AI that decides between attacking, fleeing, and casting a heal spell based on a dynamic "fear" factor... In 6 lines of code.</Description>
+In one of the examples, we implement a game AI that decides between attacking, fleeing, and casting a heal spell based on a dynamic "fear" factor... In 6 lines of code. Free to use under MIT License.</Description>
     <Copyright>2014-2019</Copyright>
     <PackageTags>c# weighted selector selection machine learning ai decision decide</PackageTags>
-    <PackageReleaseNotes>Updated to .NEt Standard 2 - thanks to Burton Rheutan for the contribution!</PackageReleaseNotes>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>Updated to .NET Standard 2 - thanks to Burton Rheutan for the contribution!</PackageReleaseNotes>
+    <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
