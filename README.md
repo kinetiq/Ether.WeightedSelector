@@ -1,7 +1,7 @@
 What is WeightedSelector.NET? 
 ==============
 
-WeightedSelector.NET lets you assign weights to a set of choices, then make  decisions based on each choice's proportion of the total weight. 
+WeightedSelector.NET is a .NET Standard 2 project (which means it should work most anywhere) that lets you assign weights to a set of choices, then make  decisions based on each choice's proportion of the total weight. 
 
 This is useful for scenarios where choices are made based on complicated but quantifiable factors, or where you need to choose between a number of reasonable choices in a way that appears semi-random. Great examples of the latter case include suggestion engines and game AI.
 
